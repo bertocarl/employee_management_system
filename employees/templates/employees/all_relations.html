@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }} | {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h2 class="text-center"><i class="fa fa-users"></i> {{ title }} For <a href="{% url 'employees:detail' id %}">{{ name }}</a></h2>
+        <a href="{% url 'employees:add-relation' id %}" class="btn btn-success btn-raised" style="display: table; margin: 0 auto;">
+            <i class="fa fa-plus"></i> Add Relation
+        </a>
+        <br>
+        {% for emp in object_list %}
+            <div class="col-sm-4">
+            <div class="thumbnail">
+              <div class="caption">
+                <h4>Name : {{ emp.name }}</h4>
+                <p>Relationship Type : {{ emp.relationship_type }}</p>
+                <p>Age : {{ emp.age }}</p>
+                <p>Date Of Birth : {{ emp.date_of_birth }}</p>
+                <a href="{% url 'employees:update-relation' emp.id %}" class="btn btn-info">
+                    <i class="fa fa-edit"></i> Update
+                </a>
+                <!-- Button trigger modal -->
+                <button class="btn btn-danger" href="" data-toggle="modal" data-target="#delete_relation{{ emp.id }}">
+                    <i class="fa fa-times"></i> Delete
+                </button>
+                {% include 'employees/delete_relation_modal.html' %}
+              </div>
+            </div>
+            </div>
+         {% empty %}
+            <p class="lead text-center">This employee has no relations yet</p>
+        {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div>
+{% endblock %}

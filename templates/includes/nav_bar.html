@@ -1,0 +1,23 @@
+{% load static %}
+{#<nav class="navbar navbar-default">#}
+<nav class="navbar primary-color">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'main_home' %}">Employee</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'employees:all' %}"><i class="fa fa-users"></i> All Employees</a></li>
+        <li><a href="{% url 'employees:add' %}"><i class="fa fa-user-plus"></i> Add Employee</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
